@@ -1,0 +1,8 @@
+*.xlsx
+*.csv
+*.txt
+*.pptx
+venv/
+.env_btu_3p10/
+__pycache__/
+*.pyc
