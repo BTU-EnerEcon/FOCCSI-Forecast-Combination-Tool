@@ -65,9 +65,9 @@ python --version  # if using pip
 Clone the FOCCSI repository to your local machine:
 
 ```bash
-git clone https://github.com/BTU-EnerEcon/FOCCSI2/tree/main/Code_FOCCSI2
+git clone https://github.com/BTU-EnerEcon/FOCCSI-Forecast-Combination-Tool
 ```
-!!!! update git URL once its published!!!!
+
 
 Then navigate to the project directory:
 
