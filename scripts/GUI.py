@@ -388,7 +388,7 @@ with tab3:
         default=[90]
     )
 
-    forecast_horizon = st.number_input("Forecast Horizon (days)", value=1)
+    forecast_horizon = st.number_input("Training Frequency (days)", value=1)
 
     st.subheader("Data Preprocessing")
 

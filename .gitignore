@@ -6,3 +6,6 @@ venv/
 .env_btu_3p10/
 __pycache__/
 *.pyc
+
+
+!requirements.txt

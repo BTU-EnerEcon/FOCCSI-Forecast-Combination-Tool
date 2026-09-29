@@ -329,7 +329,7 @@ This section configures how the rolling training/testing windows are generated:
 
 - `Training Days` – one or more training-window lengths (in days) to evaluate. If multiple values are selected, the pipeline runs the full rolling-window evaluation once per training length. Generally with an increased lenght of training windows, the accuracy can be expected to improve, while the computational costs increase. Within the dataset used for the FOCCSI project, a 90 days training windows was found to be a good trade of the between accuracy and comuputational costs. The user may run an sensitivity analyis with this parameter and the given dataset
 
-- `Forecast Horizon (days)` –  Defines the length of the test window that follows each training window. The standard value is one day. This reflects the requirements of the European electricity market, where the planned energy production for the following day must be submitted to the Transmission System Operator (TSO).
+- `Training Frequency (days)` – Defines the length of the test window that follows each training window. The standard value is one day. This reflects the requirements of the European electricity market, where the planned energy production for the following day must be submitted to the Transmission System Operator (TSO).
 
 ### Data Preprocessing
 This section configures optional filtering steps applied before the combination models are trained:
