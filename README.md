@@ -155,6 +155,8 @@ Input data should be provided as CSV files with the following format:
 - Thousands separator: `.`
 - Timestamp format: `dd.mm.yyyy HH:MM`
 
+**Sample files for each required input can be found the folder: `data\input`** 
+
 > Important: Make sure that the timestamps of the forecast and benchmark data are aligned
 
 ### Choose Combination Model
@@ -184,6 +186,7 @@ The user uploads a CSV file containing the available forecasts. Each forecast sh
 
 
 **Required Forecast Data Structure**
+- Sample-File: `data\input\forecasts`
 - First row: column headers
 - First column: timestamp information (`dd.mm.yyyy MM:HH`)
 - Remaining columns: Individual forecast time series 
@@ -204,6 +207,7 @@ The benchmark represents the actual energy generation or feed-in against which t
 
 
 **Required Benchmark Data Structure:**
+- Sample-File: `data\input\benchmark`
 - First row: column headers
 - First column: timestamp information (`dd.mm.yyyy MM:HH`)
 - Second column: Benchmark/observed energy value
@@ -224,6 +228,7 @@ This option can be enabled using:\
 When enabled, the user must provide:
 - A secondary benchmark energy dataset
 - A file containing the last available dates for the benchmark energy data
+- Sample-Files: `data\input\benchmark`
 
 The secondary benchmark functionality can be used when benchmark information is available from an additional source and the different benchmark periods need to be combined during the analysis. for each training data window the benchmark data will be replaced with the secondary benchmark data for the perion between the test date and the provided last available date
 After selecting the files, click `Upload Secondary Benchmark Data`.
@@ -238,6 +243,7 @@ Select:
 `Normalize output data` → `Yes`
 
 When normalization is enabled, an Installed Capacity Data file must also be uploaded.
+- Sample-File: `data\input\installed_power`
 
 The installed-capacity dataset is used by the pipeline as an additional input for the normalization step.
 
@@ -281,6 +287,7 @@ Provide:
 
 - Day-ahead electricity prices
 - Intraday electricity prices
+- Sample-Files: `data\input\economic`
 
 This analysis extends the evaluation beyond purely physical forecast accuracy and allows forecast errors to be considered from an economic perspective.
 

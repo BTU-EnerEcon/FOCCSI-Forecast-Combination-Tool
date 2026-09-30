@@ -382,11 +382,30 @@ with tab3:
         elasticnet_selection = "cyclic"
 
     st.subheader("Rolling Window")
-    training_days = st.multiselect(
+    training_days_input = st.text_input(
         "Training Days",
-        [30, 60, 90, 120, 180],
-        default=[90]
+        value="90",
+        help="Enter one or more training-window lengths in days, separated by commas (e.g. 30, 90, 180).",
     )
+    training_days = []
+    invalid_training_days_input = False
+    for part in training_days_input.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        try:
+            day_value = int(part)
+        except ValueError:
+            invalid_training_days_input = True
+            continue
+        if day_value <= 0:
+            invalid_training_days_input = True
+            continue
+        if day_value not in training_days:
+            training_days.append(day_value)
+
+    if invalid_training_days_input:
+        st.error("Training Days must be a comma-separated list of positive integers (e.g. 30, 90, 180).")
 
     forecast_horizon = st.number_input("Training Frequency (days)", value=1)
 
@@ -594,9 +613,21 @@ with tab4:
                 "input_data": input_data,
             }
 
-            if testing_enabled and (first_test_date is None or last_test_date is None):
+            if invalid_training_days_input:
+                st.write("**Selected Configuration Analysis**")
+                st.write("Training Days must be a comma-separated list of positive integers (e.g. 30, 90, 180).")
+            elif testing_enabled and (first_test_date is None or last_test_date is None):
                 st.write("**Selected Configuration Analysis**")
                 st.write("Please select a valid test date range.")
+            elif testing_enabled and (
+                first_test_date < default_test_date_range[0] or last_test_date > default_test_date_range[1]
+            ):
+                st.write("**Selected Configuration Analysis**")
+                st.write(
+                    "Selected test date range must be within the available forecast data range "
+                    f"({default_test_date_range[0].strftime('%d.%m.%Y')} to "
+                    f"{default_test_date_range[1].strftime('%d.%m.%Y')})."
+                )
             elif normalize_output_enabled and installed_capacity_df is None:
                 st.write("**Selected Configuration Analysis**")
                 st.write("Normalize output is enabled but no installed capacity data was uploaded (Tab 1).")

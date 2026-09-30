@@ -9,3 +9,10 @@ __pycache__/
 
 
 !requirements.txt
+!sample_day_ahead_prices.csv
+!sample_installed_capacity.csv
+!sample_intraday_prices.csv
+!sample_pv_benchmark.csv
+!sample_pv_forecasts.csv
+!sample_pv_secondary_benchmark.csv
+!sample_secondary_benchmark_cutoff.csv
